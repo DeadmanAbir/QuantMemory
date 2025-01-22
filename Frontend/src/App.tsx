@@ -1,11 +1,17 @@
 import { useState } from "react";
+import type { RequestBody } from "./lib/types/type"
 
 function App() {
   const [loading, setLoading] = useState(false);
 
+
   const handleClick = async () => {
     setLoading(true);
     try {
+      const payload : RequestBody  = {
+        name: "John Doe"
+      }
+// Now send this payload as body
       const response = await fetch("/api/check");
       const data = await response.json();
       console.log(data, import.meta.env.VITE_BACKEND_URL);

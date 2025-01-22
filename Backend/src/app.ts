@@ -4,6 +4,8 @@ import cors from "cors";
 import 'dotenv/config'
 
 import user from "@/routes/user-route";
+import { schema } from "@/lib/schema/validator";
+
 
 const PORT = process.env.PORT || 5000;
 const RATE_TIME_LIMIT = Number(process.env.RATE_TIME_LIMIT) || 15;

@@ -16,7 +16,8 @@
     "@/middleware": "dist/middleware",
     "@/controllers": "dist/controllers",
     "@/db": "dist/db",
-    "@/utils": "dist/utils"
+    "@/utils": "dist/utils",
+    "@/lib": "dist/lib/*"
   },
   "author": "takuyadev",
   "license": "ISC",
@@ -30,7 +31,8 @@
     "hpp": "^0.2.3",
     "module-alias": "^2.2.3",
     "morgan": "^1.10.0",
-    "xss": "^1.0.15"
+    "xss": "^1.0.15",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
