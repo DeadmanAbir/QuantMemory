@@ -1,6 +1,6 @@
 import express from "express";
 import rateLimit from "express-rate-limit";
-
+import cors from "cors";
 import 'dotenv/config'
 
 import user from "@/routes/user-route";
@@ -12,6 +12,9 @@ const RATE_REQUEST_LIMIT = Number(process.env.RATE_REQUEST_LIMIT) || 100;
 const app = express();
 
 app.use(express.json());
+
+
+app.use(cors());
 
 app.use(
   rateLimit({

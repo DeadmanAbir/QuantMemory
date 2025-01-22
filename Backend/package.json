@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Node.js + Express.js + TypeScript template project.",
+  "description": "Backend Folder for Quant Memory",
   "main": "./src/app.ts",
   "scripts": {
     "status": "tsc --p tsconfig.json --listFiles",

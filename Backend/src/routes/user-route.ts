@@ -7,11 +7,11 @@ const router = express.Router();
 
 
 
-router.get("/check", (req, res) => {
+router.get("/api/check", (req, res) => {
     const { user } = req.body;
     console.log(user);  
-    res.send("Server is running");
+    res.status(200).json("Server is running");
   });
 
-  router.get("/admin", getUsersAdmin);
+  router.get("/api/admin", getUsersAdmin);
 export default router;
