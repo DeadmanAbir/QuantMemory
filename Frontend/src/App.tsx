@@ -1,5 +1,6 @@
 import { useState } from "react";
-import type { RequestBody } from "./lib/types/type"
+// import { RequestBody } from "@/lib/types/type";
+
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -8,9 +9,9 @@ function App() {
   const handleClick = async () => {
     setLoading(true);
     try {
-      const payload : RequestBody  = {
-        name: "John Doe"
-      }
+      // const payload : RequestBody  = {
+      //   name: "John Doe"
+      // }
 // Now send this payload as body
       const response = await fetch("/api/check");
       const data = await response.json();
