@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 // import { RequestBody } from "@/lib/types/type";
 
 
@@ -24,13 +25,12 @@ function App() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <button
+      <Button
         onClick={handleClick}
         disabled={loading}
-        className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50"
       >
         {loading ? "Loading..." : "Fetch Data"}
-      </button>
+      </Button>
     </div>
   );
 }
