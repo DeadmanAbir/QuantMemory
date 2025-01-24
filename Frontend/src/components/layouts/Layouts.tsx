@@ -1,4 +1,4 @@
-import appConfig from '@/config/routes-config/app.config'
+import appConfig from '@/config/app.config'
 import { lazy, Suspense, useMemo } from 'react'
 
 const Layout = () => {

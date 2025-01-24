@@ -1,6 +1,6 @@
 import { UserRoles } from '@/lib/types/routes'
 import { Navigate, Outlet } from 'react-router-dom'
-import appConfig from './app.config';
+import appConfig from '../app.config';
 
 interface RouteGuardProps {
     requiredRoles?: UserRoles[];

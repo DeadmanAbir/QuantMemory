@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { publicRoutes } from './publicRoutes'
 import { RouteGuard } from './protected-route'
 import { protectedRoutes } from './protectedRoutes'
-import appConfig from './app.config'
+import appConfig from '../app.config'
 
 export const AppRoutes = () => {
   const isAuthenticated = appConfig.authenticated
