@@ -1,5 +1,11 @@
-const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
-  return <div className="bg-red-500 h-screen">{children}</div>
+import { AppRoutes } from '@/config/routes-config/app-routes'
+
+const DefaultLayout = () => {
+  return (
+    <div className="bg-red-400 ">
+      <AppRoutes />
+    </div>
+  )
 }
 
 export default DefaultLayout

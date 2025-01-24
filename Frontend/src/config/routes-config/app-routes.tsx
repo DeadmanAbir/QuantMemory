@@ -11,37 +11,19 @@ export const AppRoutes = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
-        {publicRoutes.map(({ path, component: Component, layout: Layout }) => (
-          <Route
-            key={path}
-            path={path}
-            element={
-              Layout ? (
-                <Layout>
-                  <Component />
-                </Layout>
-              ) : (
-                <Component />
-              )
-            }
-          />
+        {publicRoutes.map(({ path, component: Component }) => (
+          <Route key={path} path={path} element={<Component />} />
         ))}
 
         <Route element={<RouteGuard />}>
           {protectedRoutes.map(
-            ({ path, component: Component, layout: Layout, requiredRoles }) => (
+            ({ path, component: Component, requiredRoles }) => (
               <Route
                 key={path}
                 path={path}
                 element={
                   <RouteGuard requiredRoles={requiredRoles}>
-                    {Layout ? (
-                      <Layout>
-                        <Component />
-                      </Layout>
-                    ) : (
-                      <Component />
-                    )}
+                    <Component />
                   </RouteGuard>
                 }
               />

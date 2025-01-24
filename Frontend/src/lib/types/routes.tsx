@@ -1,4 +1,4 @@
-import { LazyExoticComponent, ReactNode } from 'react'
+import { LazyExoticComponent } from 'react'
 export enum UserRoles {
   GUEST = 'GUEST',
   USER = 'USER',
@@ -10,7 +10,6 @@ export type Route = {
   path: string
   component: LazyExoticComponent<<T>(props: T) => JSX.Element>
   requiredRoles?: UserRoles[]
-  layout?: React.ComponentType<{ children: ReactNode }>
 }
 
 export type RoutesType = Route[]

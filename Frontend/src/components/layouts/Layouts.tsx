@@ -1,15 +1,24 @@
-
-import { AppRoutes } from "@/config/routes-config/app-routes";
-
-
-
+import appConfig from '@/config/routes-config/app.config'
+import { lazy, Suspense, useMemo } from 'react'
 
 const Layout = () => {
-
-
+  const authenticated = appConfig.authenticated
+  const AppLayout = useMemo(() => {
+    if (authenticated) {
+      return lazy(() => import('./default-layout'))
+    }else{
+      return lazy(() => import('./default-layout-2'))
+    }
+  }, [authenticated])
   return (
-      <AppRoutes />
-  );
-};
+    <Suspense
+      fallback={
+        <div className="flex flex-auto flex-col h-[100vh]">LOADING...</div>
+      }
+    >
+      <AppLayout />
+    </Suspense>
+  )
+}
 
-export default Layout;
+export default Layout
