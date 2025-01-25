@@ -1,7 +1,9 @@
 const SignIn = () => {
-    return ( <div>
-       Login
-    </div> );
+  return (
+    <div className="flex items-center justify-center h-screen">
+      Sign In Page
+    </div>
+  )
 }
- 
-export default SignIn;
+
+export default SignIn

@@ -13,7 +13,8 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as AuthenticatedImport } from './routes/_authenticated'
 import { Route as IndexImport } from './routes/index'
-import { Route as PublicLoginImport } from './routes/_public/login'
+import { Route as PublicSignUpImport } from './routes/_public/sign-up'
+import { Route as PublicSignInImport } from './routes/_public/sign-in'
 import { Route as AuthenticatedDashboardImport } from './routes/_authenticated/dashboard'
 
 // Create/Update Routes
@@ -29,9 +30,15 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const PublicLoginRoute = PublicLoginImport.update({
-  id: '/_public/login',
-  path: '/login',
+const PublicSignUpRoute = PublicSignUpImport.update({
+  id: '/_public/sign-up',
+  path: '/sign-up',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PublicSignInRoute = PublicSignInImport.update({
+  id: '/_public/sign-in',
+  path: '/sign-in',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -66,11 +73,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardImport
       parentRoute: typeof AuthenticatedImport
     }
-    '/_public/login': {
-      id: '/_public/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof PublicLoginImport
+    '/_public/sign-in': {
+      id: '/_public/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof PublicSignInImport
+      parentRoute: typeof rootRoute
+    }
+    '/_public/sign-up': {
+      id: '/_public/sign-up'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof PublicSignUpImport
       parentRoute: typeof rootRoute
     }
   }
@@ -94,14 +108,16 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '': typeof AuthenticatedRouteWithChildren
   '/dashboard': typeof AuthenticatedDashboardRoute
-  '/login': typeof PublicLoginRoute
+  '/sign-in': typeof PublicSignInRoute
+  '/sign-up': typeof PublicSignUpRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '': typeof AuthenticatedRouteWithChildren
   '/dashboard': typeof AuthenticatedDashboardRoute
-  '/login': typeof PublicLoginRoute
+  '/sign-in': typeof PublicSignInRoute
+  '/sign-up': typeof PublicSignUpRoute
 }
 
 export interface FileRoutesById {
@@ -109,33 +125,37 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
-  '/_public/login': typeof PublicLoginRoute
+  '/_public/sign-in': typeof PublicSignInRoute
+  '/_public/sign-up': typeof PublicSignUpRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '' | '/dashboard' | '/login'
+  fullPaths: '/' | '' | '/dashboard' | '/sign-in' | '/sign-up'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/dashboard' | '/login'
+  to: '/' | '' | '/dashboard' | '/sign-in' | '/sign-up'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/_authenticated/dashboard'
-    | '/_public/login'
+    | '/_public/sign-in'
+    | '/_public/sign-up'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
-  PublicLoginRoute: typeof PublicLoginRoute
+  PublicSignInRoute: typeof PublicSignInRoute
+  PublicSignUpRoute: typeof PublicSignUpRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
-  PublicLoginRoute: PublicLoginRoute,
+  PublicSignInRoute: PublicSignInRoute,
+  PublicSignUpRoute: PublicSignUpRoute,
 }
 
 export const routeTree = rootRoute
@@ -150,7 +170,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/_authenticated",
-        "/_public/login"
+        "/_public/sign-in",
+        "/_public/sign-up"
       ]
     },
     "/": {
@@ -166,8 +187,11 @@ export const routeTree = rootRoute
       "filePath": "_authenticated/dashboard.tsx",
       "parent": "/_authenticated"
     },
-    "/_public/login": {
-      "filePath": "_public/login.tsx"
+    "/_public/sign-in": {
+      "filePath": "_public/sign-in.tsx"
+    },
+    "/_public/sign-up": {
+      "filePath": "_public/sign-up.tsx"
     }
   }
 }
