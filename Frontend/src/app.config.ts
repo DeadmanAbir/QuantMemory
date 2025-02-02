@@ -5,7 +5,7 @@ export type AppConfig = {
 
 const appConfig: AppConfig = {
 
-    authenticated: false
+    authenticated: true
 }
 
 export default appConfig
