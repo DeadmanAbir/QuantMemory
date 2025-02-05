@@ -1,19 +1,28 @@
-"use client"
+"use client";
 
-import { useEditor, EditorContent } from 
-
-import StarterKit from "@tiptap/starter-kit"
-import { Button } from "@/components/ui/button"
-import { Bold, Italic, List, ListOrdered, Quote, Heading1, Heading2, Undo, Redo } from "lucide-react"
+import { useEditor, EditorContent } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import { Button } from "@/components/ui/button";
+import {
+  Bold,
+  Italic,
+  List,
+  ListOrdered,
+  Quote,
+  Heading1,
+  Heading2,
+  Undo,
+  Redo,
+} from "lucide-react";
 
 interface EditorProps {
-  value: string
-  onChange: (value: string) => void
-  placeholder?: string
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
 }
 const MenuBar = ({ editor }: { editor: any }) => {
   if (!editor) {
-    return null
+    return null;
   }
 
   return (
@@ -93,8 +102,8 @@ const MenuBar = ({ editor }: { editor: any }) => {
         <Redo className="h-4 w-4" />
       </Button>
     </div>
-  )
-}
+  );
+};
 
 export default function Editor({ value, onChange, placeholder }: EditorProps) {
   const editor = useEditor({
@@ -106,15 +115,14 @@ export default function Editor({ value, onChange, placeholder }: EditorProps) {
       },
     },
     onUpdate: ({ editor }) => {
-      onChange(editor.getHTML())
+      onChange(editor.getHTML());
     },
-  })
+  });
 
   return (
     <div className="w-full">
       <MenuBar editor={editor} />
       <EditorContent editor={editor} />
     </div>
-  )
+  );
 }
-
